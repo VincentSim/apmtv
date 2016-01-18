@@ -17,7 +17,9 @@ ActiveRecord::Schema.define(version: 20160118110053) do
   enable_extension "plpgsql"
 
   create_table "videos", force: :cascade do |t|
-    t.string   "url"
+    t.string   "youtube_id"
+    t.string   "title"
+    t.text     "description"
     t.string   "expert"
     t.string   "category"
     t.string   "subcategory"

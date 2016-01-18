@@ -17,7 +17,8 @@
   <tbody>
     <% @videos.each do |video| %>
       <tr>
-        <td><%= video.url %></td>
+
+        <td><%= video.youtube_id %></td>
         <td><%= video.expert %></td>
         <td><%= video.category %></td>
         <td><%= video.subcategory %></td>
@@ -33,11 +34,28 @@
 <%= ACCOUNT.videos.size %>
 <% ACCOUNT.videos.each do |video| %>
 
-
+<%= form_for(@video) do |f| %>
+ <div class="field">
+    <%= f.label :youtube_id %><br>
+    <%= f.text_field :youtube_id, value: video.id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
 <%= video.id %>
 <%= video.title %>
 <%= video.description %>
 <%= video.embed_html.html_safe %>
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <% end %>
 <% video = Yt::Video.new(id:'BPNYv0vd78A') %>
 <%= video.embed_html.html_safe %>

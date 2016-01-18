@@ -1,1 +1,1 @@
-json.extract! @video, :id, :url, :expert, :category, :subcategory, :date, :created_at, :updated_at
+json.extract! @video, :id, :youtube_id, :expert, :category, :subcategory, :date, :created_at, :updated_at
