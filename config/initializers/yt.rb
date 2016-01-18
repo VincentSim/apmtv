@@ -1,9 +1,12 @@
 Yt.configure do |config|
   config.log_level = :debug
-  config.client_id = '396538787469-i6eg33iv2k1a8fld8e7rcbf7c8km600v.apps.googleusercontent.com
-'
-  config.client_secret = 'uZD-t7T5eGcqP9eEDBOXcjme'
-  config.api_key = 'AIzaSyC7hDAHvXRKmJMLwDgryHAWBQzU-EIuMHg'
+  config.client_id = ENV["YT_CLIENT_ID"]
+  config.client_secret = ENV["YT_CLIENT_SECRET"]
+  config.api_key = ENV["YT_API_KEY"]
 end
 
-ACCOUNT = Yt::Account.new access_token:  'ya29.bQJzVzvY7TmhnWIS7u7pPUuocp67WbePIinzt74xEbFkzUDY-bEqcTfeOE2l-nDOI8T1'
+# ACCOUNT = Yt::Account.new access_token: "#{ENV['ACCESS_TOKEN']}"
+ACCOUNT = Yt::Account.new refresh_token: "#{ENV['REFRESH_TOKEN']}"
+
+
+
