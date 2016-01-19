@@ -29,6 +29,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # youtube api
 gem 'yt', '~> 0.25.6'
 
+#simple_form
+gem 'simple_form'
+
+#frontend setup
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'font-awesome-sass', '~> 4.2.0'
+gem "autoprefixer-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

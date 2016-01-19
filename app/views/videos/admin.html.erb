@@ -1,0 +1,30 @@
+<%= render 'shared/navbar' %>
+
+<% @videos.each do |video| %>
+
+  <%= simple_form_for(@video) do |f| %>
+    <%= video.embed_html.html_safe %>
+    <div class="form_a">
+      <%= f.input :youtube_id, label: :youtube_id, as: :hidden, input_html: { value: video.id} %>
+
+      <%= f.input :title, label: "Titre", input_html: { value: video.title} %>
+
+      <%= f.input :description, label: "Description", input_html: { value: video.description} %>
+      <div class="split">
+        <%= f.input :date, label: "Date", input_html: { value: video.published_at.strftime("%d/%m/%Y")} %>
+        <%= f.input :expert, label: "Expert" %>
+      </div>
+    </div>
+    <div class="form_b">
+      <div class="split">
+        <%= f.input :category, label: "Category" %>
+        <%= f.input :subcategory, label: "Sous-categorie" %>
+      </div>
+
+      <div class="actions">
+          <%= f.button :submit, "Importer" %>
+      </div>
+    </div>
+  <% end %>
+
+<% end %>

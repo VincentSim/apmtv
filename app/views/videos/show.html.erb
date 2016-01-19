@@ -1,29 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @video.url %>
+  <iframe width="1000" height="400" src="//www.youtube.com/embed/<%=@video.youtube_id%>" frameborder="0" allowfullscreen></iframe>
 </p>
 
 <p>
-  <strong>Expert:</strong>
-  <%= @video.expert %>
+  <%= @video.title %>
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @video.category %>
+  intervention de <%= @video.expert %> le <%= @video.date %>
 </p>
 
 <p>
-  <strong>Subcategory:</strong>
-  <%= @video.subcategory %>
+  <%= @video.category %> <%= @video.subcategory %>
+</p>
+<p>
+  <%= @video.description %>
 </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @video.date %>
-</p>
+
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>

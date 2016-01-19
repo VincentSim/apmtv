@@ -1,12 +1,23 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with :name => ENV["login"], :password => ENV["mdp"], only: [:index]
+  http_basic_authenticate_with :name => ENV["login"], :password => ENV["mdp"], only: [:admin, :admin2, :edit, :destroy]
 
   # GET /videos
   # GET /videos.json
   def index
     @videos = Video.all
+  end
+
+  def admin
+    @videos = []
+    ACCOUNT.videos.each do |video|
+      @videos << video unless Video.find_by youtube_id: video.id
+    end
     @video = Video.new
+  end
+
+  def admin2
+    @videos = Video.all
   end
 
   # GET /videos/1
@@ -27,7 +38,6 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    binding.pry
     @video = Video.new(video_params)
 
     respond_to do |format|
@@ -73,6 +83,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:youtube_id, :expert, :category, :subcategory, :date)
+      params.require(:video).permit(:youtube_id, :title, :description,:expert, :category, :subcategory, :date)
     end
 end
