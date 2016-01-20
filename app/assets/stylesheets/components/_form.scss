@@ -34,7 +34,7 @@
 
       .form-group{
         width: 50%;
-        &:nth-child(2){
+        &:nth-child(n+2){
           padding-left: 10px;
         }
       }
