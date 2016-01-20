@@ -32,9 +32,25 @@
 </table>
 
 
-<% video = Yt::Video.new(id:'BPNYv0vd78A') %>
-<%= video.embed_html.html_safe %>
+  <header>
+    <a href="." title="Home"><img src="img/instant_search_logo@2x.png"/></a>
+    <div id="search-input"></div>
+    <div id="search-input-icon"></div>
+  </header>
+  <main>
+  <div id="left-column">
+    <div id="category" class="facet"></div>
+    <div id="brand" class="facet"></div>
+    <div id="price" class="facet"></div>
+    <div id="type" class="facet"></div>
+  </div>
 
-<br>
 
+  <div id="right-column">
+    <div id="sort-by-wrapper"><span id="sort-by"></span></div>
+    <div id="stats"></div>
+    <div id="hits"></div>
+    <div id="pagination"></div>
+  </div>
+</main>
 <%= link_to 'New Video', new_video_path %>
