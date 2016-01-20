@@ -1,7 +1,10 @@
 <%= render 'shared/navbar' %>
+<div class="container">
+  <% @videos.each do |video| %>
+    <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/hqdefault.jpg") %>
 
-<% @videos.each do |video| %>
-  <%= image_tag("https://i.ytimg.com/vi_webp/#{video.youtube_id}/sddefault.webp") %>
-  <%= video.title %>
-  <%= link_to "editer", edit_video_path(video) %>
-<% end %>
+
+    <%= video.title %>
+    <%= link_to "editer", edit_video_path(video) %>
+  <% end %>
+</div>

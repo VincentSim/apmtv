@@ -1,30 +1,62 @@
 <%= render 'shared/navbar' %>
+<div class="container">
+  <button id="collapse-button" class="btn btn-cta" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseExample">
+    +
+  </button>
+  <div class="collapse" id="collapseForm">
+    <div class="add-other">
+      <%= simple_form_for(@video) do |f| %>
+        <div class="form_a">
+          <%= f.input :url, label: "URL" %>
+          <%= f.input :title, label: "Titre" %>
 
-<% @videos.each do |video| %>
+          <%= f.input :description, label: "Description" %>
+          <div class="split">
+            <%= f.input :date, label: "Date" %>
+            <%= f.input :expert, label: "Expert" %>
+          </div>
+        </div>
+        <div class="form_b">
+          <div class="split">
+            <%= f.input :category, label: "Category" %>
+            <%= f.input :subcategory, label: "Sous-categorie" %>
+          </div>
 
-  <%= simple_form_for(@video) do |f| %>
-    <%= video.embed_html.html_safe %>
-    <div class="form_a">
-      <%= f.input :youtube_id, label: :youtube_id, as: :hidden, input_html: { value: video.id} %>
-
-      <%= f.input :title, label: "Titre", input_html: { value: video.title} %>
-
-      <%= f.input :description, label: "Description", input_html: { value: video.description} %>
-      <div class="split">
-        <%= f.input :date, label: "Date", input_html: { value: video.published_at.strftime("%d/%m/%Y")} %>
-        <%= f.input :expert, label: "Expert" %>
-      </div>
+          <div class="actions">
+              <%= f.button :submit, "Importer",  class: 'btn-cta' %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="form_b">
-      <div class="split">
-        <%= f.input :category, label: "Category" %>
-        <%= f.input :subcategory, label: "Sous-categorie" %>
-      </div>
+  </div>
 
-      <div class="actions">
-          <%= f.button :submit, "Importer" %>
+
+  <% @videos.each do |video| %>
+
+    <%= simple_form_for(@video) do |f| %>
+      <%= video.embed_html.html_safe %>
+      <div class="form_a">
+        <%= f.input :youtube_id, label: :youtube_id, as: :hidden, input_html: { value: video.id} %>
+
+        <%= f.input :title, label: "Titre", input_html: { value: video.title} %>
+
+        <%= f.input :description, label: "Description", input_html: { value: video.description} %>
+        <div class="split">
+          <%= f.input :date, label: "Date", input_html: { value: video.published_at.strftime("%d/%m/%Y")} %>
+          <%= f.input :expert, label: "Expert" %>
+        </div>
       </div>
-    </div>
+      <div class="form_b">
+        <div class="split">
+          <%= f.input :category, label: "Category" %>
+          <%= f.input :subcategory, label: "Sous-categorie" %>
+        </div>
+
+        <div class="actions">
+            <%= f.button :submit, "Importer",  class: 'btn-cta' %>
+        </div>
+      </div>
+    <% end %>
+
   <% end %>
-
-<% end %>
+</div>

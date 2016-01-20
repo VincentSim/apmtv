@@ -23,7 +23,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-
+    @url = '//www.youtube.com/embed/'+@video.youtube_id
   end
 
   # GET /videos/new
@@ -39,6 +39,7 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(video_params)
+    @video.youtube_id = video_params[:url].match(/[v][=][-]?\w+[-]?\w+/i)[0][2..12] if video_params[:url]
 
     respond_to do |format|
       if @video.save
@@ -83,6 +84,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:youtube_id, :title, :description,:expert, :category, :subcategory, :date)
+      params.require(:video).permit(:youtube_id, :title, :url, :description,:expert, :category, :subcategory, :date)
     end
 end
