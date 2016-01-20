@@ -6,5 +6,10 @@
 
     <%= video.title %>
     <%= link_to "editer", edit_video_path(video) %>
+    <%= link_to video_path(video), method: :delete,title: "Confirmation",  data: { confirm: "Vous êtes sûrs ?" } do %>
+      <div class="btn btn-danger delete_presentation_font">
+        <%= "Supprimer" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
