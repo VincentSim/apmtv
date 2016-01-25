@@ -1,0 +1,29 @@
+#videos_show{
+  .tv-title-show{
+    font-size: 30px;
+    text-align: center;
+    font-style: normal;
+    color: #14032b;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+  }
+  .well{
+    margin-bottom: 40px;
+  }
+  iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .responsive-video{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 60px;
+    overflow: hidden;
+  }
+}

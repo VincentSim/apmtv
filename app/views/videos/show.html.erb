@@ -1,25 +1,32 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tv-title-show">
+          <%= @video.title %>
+        </div>
 
-<p>
-  <iframe width="1000" height="400" src="<%= @url %>" frameborder="0" allowfullscreen></iframe>
-</p>
+        <div class="well well-lg">
+          <div class="responsive-video">
+            <iframe src="<%= @url %>" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
 
-<p>
-  <%= @video.title %>
-</p>
+      <p>
 
-<p>
-  intervention de <%= @video.expert %> le <%= @video.date %>
-</p>
+      </p>
 
-<p>
-  <%= @video.category %> <%= @video.subcategory %>
-</p>
-<p>
-  <%= @video.description %>
-</p>
+      <p>
+        intervention de <%= @video.expert %> le <%= @video.date %>
+      </p>
 
+      <p>
+        <%= @video.category %> <%= @video.subcategory %>
+      </p>
+      <p>
+        <%= @video.description %>
+      </p>
+    </div>
+  </div>
+</div>
 
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>

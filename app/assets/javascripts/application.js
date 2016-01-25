@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require algoliasearch
+//= require algoliasearch-helper
+//= require algolia/typeahead.jquery
+//= require hogan
 //= require_tree .

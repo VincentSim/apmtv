@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '2.1.2'
+
+gem 'bundler', '>= 1.8.4'
+
 gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
 gem 'figaro'
@@ -19,6 +22,14 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Algolia search
 gem "algoliasearch-rails"
+gem 'hogan_assets'
+
+# Rails assets
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-algoliasearch'
+  gem 'rails-assets-algoliasearch-helper'
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

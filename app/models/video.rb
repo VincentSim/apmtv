@@ -1,7 +1,7 @@
 class Video < ActiveRecord::Base
   include AlgoliaSearch
 
-  algoliasearch per_environment: true do
+  algoliasearch do
     attributesToIndex ['title', 'description', 'expert', 'tag', 'category', 'subcategory']
 
   end

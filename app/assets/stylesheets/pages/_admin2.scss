@@ -1,0 +1,29 @@
+#videos_admin2{
+  background-color: rgba(211, 211, 211, 0.39);
+  .card{
+    display: block;
+    margin: auto;
+    width: 80%;
+    min-width: 550px;
+    height: 130px;
+    background-color: white;
+    margin-top: 30px;
+
+    img{
+      height:100%;
+    }
+    .links-action{
+      float: right;
+      display: flex;
+      height: 100%;
+      align-items:center;
+      width: 40%;
+      padding: 50px;
+      justify-content: space-around;
+
+      .btn-edit{
+        height: 36px;
+      }
+    }
+  }
+}

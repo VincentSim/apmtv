@@ -1,15 +1,21 @@
 <%= render 'shared/navbar' %>
 <div class="container">
   <% @videos.each do |video| %>
-    <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/hqdefault.jpg") %>
-
-
-    <%= video.title %>
-    <%= link_to "editer", edit_video_path(video) %>
-    <%= link_to video_path(video), method: :delete,title: "Confirmation",  data: { confirm: "Vous êtes sûrs ?" } do %>
-      <div class="btn btn-danger delete_presentation_font">
-        <%= "Supprimer" %>
+    <div class="card">
+      <%= link_to video_path(video) do %>
+        <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/hqdefault.jpg") %>
+      <% end %>
+      <%= link_to video_path(video) do %>
+        <%= video.title %>
+      <% end %>
+      <div class="links-action">
+        <%= link_to "editer", edit_video_path(video), class: "btn btn-success btn-edit" %>
+        <%= link_to video_path(video), method: :delete,title: "Confirmation",  data: { confirm: "Vous êtes sûrs ?" } do %>
+          <div class="btn btn-danger btn-delete">
+            <%= "Supprimer" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>

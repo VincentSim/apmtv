@@ -31,26 +31,43 @@
   </tbody>
 </table>
 
+<script>
+var client = algoliasearch("ADXJDI9UEF", "ea4fabd9298b3afe8fd053e9eb0594b7"); // public credentials
+  var index = client.initIndex('Video');
+  // helper
+  var helper = algoliasearchHelper(client, index, {
+    hitsPerPage: 50
+  });
 
-  <header>
-    <a href="." title="Home"><img src="img/instant_search_logo@2x.png"/></a>
-    <div id="search-input"></div>
-    <div id="search-input-icon"></div>
-  </header>
-  <main>
-  <div id="left-column">
-    <div id="category" class="facet"></div>
-    <div id="brand" class="facet"></div>
-    <div id="price" class="facet"></div>
-    <div id="type" class="facet"></div>
-  </div>
+  helper.on('result', function(content) {
+  console.log(content);
+});
+
+helper.on('error', function(err) {
+  console.error(err);
+});
+helper.setQuery('app').search();
+  // simple query
+//index.search('app', searchCallback);
+
+// with parameters
+index.search(
+  'app', {
+    hitsPerPage: 5, facets: '*'
+  },
+  searchCallback
+);
+
+function searchCallback(err, content) {
+  if (err) {
+    return err;
+  }
+
+  content.hits.forEach(function(hit) {
+    console.log(hit);
+  });
+}
 
 
-  <div id="right-column">
-    <div id="sort-by-wrapper"><span id="sort-by"></span></div>
-    <div id="stats"></div>
-    <div id="hits"></div>
-    <div id="pagination"></div>
-  </div>
-</main>
-<%= link_to 'New Video', new_video_path %>
+</script>
+
