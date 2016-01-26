@@ -38,9 +38,9 @@
 
 <main>
   <div id="left-column">
-    <div id="category" class="facet"></div>
-    <div id="subcategory" class="facet"></div>
-    <div id="tag" class="facet"></div>
+    <div id="category" class="facet">category</div>
+    <div id="subcategory" class="facet">subcategory</div>
+    <div id="tag" class="facet">Tag</div>
   </div>
 
 
@@ -84,10 +84,10 @@ search.addWidget(
 var hitTemplate=
 '<div class="hit">' +
     '<div class="hit-content">' +
-    '<a class="pull-left" href="{{ video_url }}">'+
-      '<img class="media-object hit-picture" src="http://img.youtube.com/vi/{{{ _highlightResult.youtube_id.value }}}/hqdefault.jpg " >' +
+    '<a class="pull-left" href="/videos/{{{ objectID }}}">'+
+      '<img class="media-object hit-picture" src="http://img.youtube.com/vi/{{{ youtube_id }}}/hqdefault.jpg " >' +
       '</a>'+
-      '<h2 class="hit-youtube_id">{{{_highlightResult.youtube_id.value}}}</h2>' +
+      '<h2 class="hit-youtube_id">{{{ youtube_id }}}</h2>' +
       '<h2 class="hit-name">{{{_highlightResult.title.value}}}</h2>' +
       '<p class="hit-description">{{{_highlightResult.description.value}}}</p>' +
     '</div>' +
@@ -109,10 +109,65 @@ search.addWidget(
       for (var i = 1; i <= 5; ++i) {
         hit.stars.push(i <= hit.rating);
       }
+      console.log(hit.objectID);
       return hit;
+
     }
   })
 );
+
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#category',
+    attributeName: 'category',
+    operator: 'and',
+    limit: 10,
+    cssClasses: {
+      list: 'nav nav-list',
+      count: 'badge pull-right',
+      active: 'active'
+    },
+    templates: {
+      header: 'Categorie'
+    }
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#subcategory',
+    attributeName: 'subcategory',
+    operator: 'and',
+    limit: 10,
+    cssClasses: {
+      list: 'nav nav-list',
+      count: 'badge pull-right',
+      active: 'active'
+    },
+    templates: {
+      header: 'Sous categorie'
+    }
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#tag',
+    attributeName: 'tag',
+    operator: 'and',
+    limit: 10,
+    cssClasses: {
+      list: 'nav nav-list',
+      count: 'badge pull-right',
+      active: 'active'
+    },
+    templates: {
+      header: 'Tags'
+    }
+  })
+);
+
 search.start();
   <% end %>
 <% end %>
