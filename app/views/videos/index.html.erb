@@ -30,44 +30,94 @@
     <% end %>
   </tbody>
 </table>
+<header>
+    <a href="." title="Home"></a>
+    <div id="search-input"></div>
+    <div id="search-input-icon"></div>
+</header>
 
-<script>
-var client = algoliasearch("ADXJDI9UEF", "ea4fabd9298b3afe8fd053e9eb0594b7"); // public credentials
-  var index = client.initIndex('Video');
-  // helper
-  var helper = algoliasearchHelper(client, index, {
-    hitsPerPage: 50
-  });
+<main>
+  <div id="left-column">
+    <div id="category" class="facet"></div>
+    <div id="subcategory" class="facet"></div>
+    <div id="tag" class="facet"></div>
+  </div>
 
-  helper.on('result', function(content) {
-  console.log(content);
+
+  <div id="right-column">
+    <div id="sort-by-wrapper"><span id="sort-by"></span></div>
+    <div id="stats"></div>
+    <div id="hits"></div>
+    <div id="pagination"></div>
+  </div>
+</main>
+<script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+<script>console.log('ici');</script>
+<% content_for(:js) do %>
+
+
+
+
+
+  <%= javascript_tag(:js) do %>
+  console.log('là');
+    var search = instantsearch({
+  // Replace with your own values
+  appId: 'ADXJDI9UEF',
+  apiKey: 'ea4fabd9298b3afe8fd053e9eb0594b7', // search only API key, no ADMIN key
+  indexName: 'Video',
+  urlSync: true
 });
 
-helper.on('error', function(err) {
-  console.error(err);
-});
-helper.setQuery('app').search();
-  // simple query
-//index.search('app', searchCallback);
-
-// with parameters
-index.search(
-  'app', {
-    hitsPerPage: 5, facets: '*'
-  },
-  searchCallback
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-input',
+    placeholder: 'Search for products'
+  })
+);
+search.addWidget(
+  instantsearch.widgets.stats({
+    container: '#stats'
+  })
 );
 
-function searchCallback(err, content) {
-  if (err) {
-    return err;
-  }
+var hitTemplate=
+'<div class="hit">' +
+    '<div class="hit-content">' +
+    '<a class="pull-left" href="{{ video_url }}">'+
+      '<img class="media-object hit-picture" src="http://img.youtube.com/vi/{{{ _highlightResult.youtube_id.value }}}/hqdefault.jpg " >' +
+      '</a>'+
+      '<h2 class="hit-youtube_id">{{{_highlightResult.youtube_id.value}}}</h2>' +
+      '<h2 class="hit-name">{{{_highlightResult.title.value}}}</h2>' +
+      '<p class="hit-description">{{{_highlightResult.description.value}}}</p>' +
+    '</div>' +
+  '</div>';
 
-  content.hits.forEach(function(hit) {
-    console.log(hit);
-  });
-}
+var noResultsTemplate =
+  '<div class="text-center">No results found matching <strong>{{query}}</strong>.</div>';
+
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#hits',
+    hitsPerPage: 10,
+    templates: {
+      empty: noResultsTemplate,
+      item: hitTemplate
+    },
+    transformData: function(hit) {
+      hit.stars = [];
+      for (var i = 1; i <= 5; ++i) {
+        hit.stars.push(i <= hit.rating);
+      }
+      return hit;
+    }
+  })
+);
+search.start();
+  <% end %>
+<% end %>
 
 
-</script>
+
+
 

@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Apmtv</title>
-  <link rel="stylesheet" href="http://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <!-- <script src="http://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script> -->
@@ -20,7 +21,7 @@
 
 
 <%= javascript_include_tag 'application' %>
-
+<%= yield(:js) %>
 <%= render 'shared/footer' %>
 </body>
 </html>
