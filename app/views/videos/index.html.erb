@@ -1,56 +1,52 @@
+<%= render 'shared/navpublic' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Videos</h1>
+<div class="container">
+  <div class="row">
+    <div class="container-fluid page">
+      <div class="row tv-margin">
+      </div>
+      <div class="row">
+        <div class="tv-title">
+          <strong>SHOWTIME BABY!</strong>
+        </div>
+        <div class="tv-content">
+          <!-- facets -->
+          <div class="col-md-2 facets-fixed tv-facets-fixed">
+            <div id="category" class="facet">category</div>
+            <div id="subcategory" class="facet">subcategory</div>
+            <div id="tag" class="facet">Tag</div>
+          </div>
+          <div class="col-md-10 tv-videos-contents">
+            <div id="search-input"></div>
+            <div id="stats"></div>
+            <br>
+            <div id="hits">
 
-<table>
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th>Expert</th>
-      <th>Category</th>
-      <th>Subcategory</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-
-        <td><%= video.youtube_id %></td>
-        <td><%= video.expert %></td>
-        <td><%= video.category %></td>
-        <td><%= video.subcategory %></td>
-        <td><%= video.date %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<header>
-    <a href="." title="Home"></a>
-    <div id="search-input"></div>
-    <div id="search-input-icon"></div>
-</header>
-
-<main>
-  <div id="left-column">
-    <div id="category" class="facet">category</div>
-    <div id="subcategory" class="facet">subcategory</div>
-    <div id="tag" class="facet">Tag</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
 
   <div id="right-column">
     <div id="sort-by-wrapper"><span id="sort-by"></span></div>
     <div id="stats"></div>
-    <div id="hits"></div>
+
     <div id="pagination"></div>
   </div>
 </main>
+
+
+
+
+
+
+
+
 <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
 <script>console.log('ici');</script>
 <% content_for(:js) do %>
@@ -72,7 +68,8 @@
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-input',
-    placeholder: 'Search for products'
+    placeholder: 'Search for products',
+    cssClasses: {input: 'form-control'}
   })
 );
 search.addWidget(
@@ -82,15 +79,11 @@ search.addWidget(
 );
 
 var hitTemplate=
-'<div class="hit">' +
     '<div class="hit-content">' +
     '<a class="pull-left" href="/videos/{{{ objectID }}}">'+
       '<img class="media-object hit-picture" src="http://img.youtube.com/vi/{{{ youtube_id }}}/hqdefault.jpg " >' +
-      '</a>'+
-      '<h2 class="hit-youtube_id">{{{ youtube_id }}}</h2>' +
-      '<h2 class="hit-name">{{{_highlightResult.title.value}}}</h2>' +
-      '<p class="hit-description">{{{_highlightResult.description.value}}}</p>' +
-    '</div>' +
+      '<div class="hit-name">{{{_highlightResult.title.value}}}</div>' +
+    '</a>'+
   '</div>';
 
 var noResultsTemplate =
@@ -104,12 +97,13 @@ search.addWidget(
       empty: noResultsTemplate,
       item: hitTemplate
     },
+    cssClasses: {
+    item: 'col-md-3 col-sm-3 know-vid'},
     transformData: function(hit) {
       hit.stars = [];
       for (var i = 1; i <= 5; ++i) {
         hit.stars.push(i <= hit.rating);
       }
-      console.log(hit.objectID);
       return hit;
 
     }

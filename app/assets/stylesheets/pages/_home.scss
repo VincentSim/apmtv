@@ -2,3 +2,52 @@
  * SASS code SPECIFIC TO your home page
  * (margin/padding adjustments, background image, etc..)
  * ------------------------------------- */
+ #videos_index{
+  @media (min-width: 992px){
+    .tv-margin {
+        margin-top: 66px;
+    }
+  }
+  .tv-title{
+    text-align: center;
+    font-style: normal;
+    color: #14032b;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+  }
+  @media(min-width: 1250px){
+      .tv-contents {
+      width: 1300px;
+      margin: 0 auto;
+    }
+  }
+  #results{
+    padding-top: 20px;
+  }
+  #stats{
+    text-align: center;
+  }
+  .know-vid {
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 13px;
+    float: none;
+    .pull-left{
+      text-align: center;
+      img{
+        width:100%;
+        border-radius:3px;
+      }
+      .hit-name{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        line-height: 17px;
+        font-size: 16px;
+      }
+    }
+  }
+}

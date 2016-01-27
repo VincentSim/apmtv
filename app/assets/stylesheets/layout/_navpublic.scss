@@ -1,0 +1,71 @@
+.navpublic{
+    min-height: 124px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.07), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-image: url(bandeau_webtv.fw.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .container{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .navbar-wagon-item{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      justify-content:space-around;
+
+      ul{
+        display: flex;
+        align-items:center;
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+
+        li{
+          width: 140px;
+          text-align: center;
+          font-weight: 100;
+        }
+
+        li > a{
+          color: white;
+          font-size: 14px;
+          text-transform: uppercase;
+          &:hover {
+            text-decoration: none;
+            color: lightgray;
+            }
+
+        }
+      }
+    }
+    .share-links{
+      display: flex;
+      align-items:center;
+      padding: 10px;
+
+      a{
+        color: #303030;
+        background-color: #ffffff;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        margin: 0 2px;
+        overflow: hidden;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+        -webkit-transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+        font-size: 13px;
+        text-align: center;
+        .fa{
+          margin-top: 8px;
+        }
+      }
+    }
+}
