@@ -5,8 +5,8 @@ Yt.configure do |config|
   config.api_key = ENV["YT_API_KEY"]
 end
 
-ACCOUNT = Yt::Account.new access_token: "#{ENV['ACCESS_TOKEN']}"
-# ACCOUNT = Yt::Account.new refresh_token: "#{ENV['REFRESH_TOKEN']}"
+# ACCOUNT = Yt::Account.new access_token: "#{ENV['ACCESS_TOKEN']}"
+ACCOUNT = Yt::Account.new refresh_token: "#{ENV['REFRESH_TOKEN']}"
 
 
 
