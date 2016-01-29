@@ -34,11 +34,13 @@
   <% @videos.each do |video| %>
 
     <%= simple_form_for(@video) do |f| %>
-    <a href="https://www.youtube.com/watch?v=<%= video.id %>">
-      <div class="thumbnail">
+    <div class="thumbnail">
+      <a href="https://www.youtube.com/watch?v=<%= video.id %>">
+
         <%= image_tag video.thumbnail_url %>
-      </div>
-    </a>
+
+      </a>
+    </div>
       <div class="form_a">
         <%= f.input :youtube_id, label: :youtube_id, as: :hidden, input_html: { value: video.id} %>
 
