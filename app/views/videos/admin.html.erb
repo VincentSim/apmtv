@@ -36,7 +36,7 @@
     <%= simple_form_for(@video) do |f| %>
     <a href="https://www.youtube.com/watch?v=<%= video.id %>">
       <div class="thumbnail">
-        <%= video.thumbnail_url %>
+        <%= image_tag video.thumbnail_url %>
       </div>
     </a>
       <div class="form_a">
