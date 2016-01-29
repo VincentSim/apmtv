@@ -17,16 +17,15 @@
     <%= f.input :title %>
 
     <%= f.input :description %>
-    <div class="split">
-      <%= f.input :expert %>
-      <%= f.input :category %>
-    </div>
+    <%= f.input :expert %>
   </div>
   <div class="form_b">
     <div class="split">
-      <%= f.input :subcategory %>
+      <%= f.input :category, selected:["Développement du dirigeant"], collection: Video::CATEGORY  %>
+      <!-- p.select(:category, options_for_select(Presentation::FR_CATEGORY, "Business")) -->
+      <%= f.input :tag, label: "Tag", selected: "Parole d'expert", collection: Video::TAG %>
       <%= f.input :date %>
-      <%= f.input :tag, label: "Tag" %>
+
     </div>
     <div class="actions">
       <%= f.button :submit, "Editer la vidéo",  class: 'btn-cta' %>

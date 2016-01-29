@@ -50,4 +50,51 @@
       }
     }
   }
+  .tag-unselected{
+    border-radius: 4px;
+    background-color: #ebedef;
+    color: #7b8996;
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+    margin: 0 5px 5px 0;
+    line-height: 15px;
+    height: 27px;
+    padding: 6px 21px;
+    transition: .25s linear;
+    background-color: inherit;
+    width: 100%;
+    &:hover{
+      background-color: #2c3e50;
+      color: #fff;
+      padding-right: 28px;
+      padding-left: 14px;
+    }
+
+    label{
+      width:80%;
+      .badge{
+        background-color: transparent;
+      }
+    }
+  }
+  .active{
+        border-radius: 4px;
+    background-color: #ebedef;
+    color: #7b8996;
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
+    margin: 0 5px 5px 0;
+    line-height: 15px;
+    height: 27px;
+    padding: 6px 21px;
+    transition: .25s linear;
+  }
 }
