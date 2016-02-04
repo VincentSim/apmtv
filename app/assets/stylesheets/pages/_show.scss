@@ -9,14 +9,15 @@
     text-decoration: none;
     letter-spacing: 3px;
     margin-bottom: 30px;
+    margin-top: 30px;
   }
   .well{
     margin-bottom: 40px;
+    max-width: 800px;
+    margin: auto;
 
   }
-  .well-lg{
-    height: 400px;
-  }
+
   iframe{
     position: absolute;
     top: 0;
