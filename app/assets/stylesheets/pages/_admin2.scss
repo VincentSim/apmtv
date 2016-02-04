@@ -1,5 +1,18 @@
 #videos_admin2{
   background-color: rgba(211, 211, 211, 0.39);
+
+  .search-twitter{
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    .twitter-typeahead{
+      width: 100%;
+      .tt-dropdown-menu{
+        width: 100%;
+        background-color: white;
+      }
+    }
+  }
   .card{
     display: flex;
     margin: auto;

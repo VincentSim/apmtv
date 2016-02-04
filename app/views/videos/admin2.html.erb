@@ -1,5 +1,10 @@
 <%= render 'shared/navbar' %>
+
+
 <div class="container">
+  <div class="search-twitter">
+    <input class="typeahead form-control" type="text" placeholder="Start typing" id="typeahead-algolia"  spellcheck="false"/>
+  </div>
   <% @videos.each do |video| %>
     <div class="card">
       <%= link_to video_path(video) do %>
@@ -21,3 +26,25 @@
     </div>
   <% end %>
 </div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag(:js) do %>
+   $(document).ready(function() {
+          var client = algoliasearch("ADXJDI9UEF", "ea4fabd9298b3afe8fd053e9eb0594b7");
+          var index = client.initIndex('Video');
+
+         var template = Hogan.compile('<a href="{{url}}">{{{_highlightResult.title.value}}}</a>');
+        $('#typeahead-algolia').typeahead({hint: false}, {
+          source: client.initIndex('Video').ttAdapter(),
+          displayKey: 'title', // attribute displayed once selected
+          templates: {
+            suggestion: function(hit) {
+              return template.render(hit); // moustache template rendered by Hogan
+            }
+          }
+        });
+        });
+        // use Hogan as templating engine
+
+  <% end %>
+<% end %>
