@@ -6,7 +6,7 @@
         <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/hqdefault.jpg") %>
       <% end %>
       <%= link_to video_path(video) do %>
-        <%= video.title %>
+        <%= video.title.truncate(240) %>
       <% end %>
       <div class="links-action">
         <%= link_to "editer", edit_video_path(video), class: "btn btn-success btn-edit" %>
