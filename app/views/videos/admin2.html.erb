@@ -5,9 +5,11 @@
       <%= link_to video_path(video) do %>
         <%= image_tag("http://img.youtube.com/vi/#{video.youtube_id}/hqdefault.jpg") %>
       <% end %>
-      <%= link_to video_path(video) do %>
-        <%= video.title.truncate(240) %>
-      <% end %>
+      <div class="card-title">
+        <%= link_to video_path(video) do %>
+          <%= video.title.truncate(240) %>
+        <% end %>
+      </div>
       <div class="links-action">
         <%= link_to "editer", edit_video_path(video), class: "btn btn-success btn-edit" %>
         <%= link_to video_path(video), method: :delete,title: "Confirmation",  data: { confirm: "Vous êtes sûrs ?" } do %>
