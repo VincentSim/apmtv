@@ -1,3 +1,4 @@
+<%= render 'shared/navpublic' %>
 <p id="notice"><%= notice %></p>
 <div class="container">
     <div class="row">
@@ -11,21 +12,6 @@
             <iframe src="<%= @url %>" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
-
-      <p>
-
-      </p>
-
-      <p>
-        intervention de <%= @video.expert %> le <%= @video.date %>
-      </p>
-
-      <p>
-        <%= @video.category %> <%= @video.subcategory %>
-      </p>
-      <p>
-        <%= @video.description %>
-      </p>
     </div>
   </div>
 </div>
