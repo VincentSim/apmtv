@@ -40,11 +40,13 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.youtube_id = video_params[:url].match(/[v][=][-]?\w+[-]?\w+/i)[0][2..12] if video_params[:url]
-
+    binding.pry
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.js
+        format.html
         format.json { render :show, status: :created, location: @video }
+
       else
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }

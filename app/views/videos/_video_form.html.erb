@@ -1,0 +1,31 @@
+<%= simple_form_for(@video, remote:true) do |f| %>
+<div class="thumbnail">
+  <a href="https://www.youtube.com/watch?v=<%= video.id %>">
+
+    <%= image_tag("http://img.youtube.com/vi/#{video.id}/hqdefault.jpg") %>
+
+  </a>
+</div>
+  <div class="form_a">
+    <%= f.input :youtube_id, label: :youtube_id, as: :hidden, input_html: { value: video.id} %>
+
+    <%= f.input :title, label: "Titre", input_html: { value: video.title} %>
+
+    <%= f.input :description, label: "Description", input_html: { value: video.description} %>
+
+    <%= f.input :expert, label: "Expert" %>
+
+  </div>
+  <div class="form_b">
+    <div class="split">
+      <%= f.input :category, selected:["Développement du dirigeant"], collection: Video::CATEGORY  %>
+      <!-- p.select(:category, options_for_select(Presentation::FR_CATEGORY, "Business")) -->
+      <%= f.input :tag, label: "Tag", selected: "Parole d'expert", collection: Video::TAG %>
+      <%= f.input :date, input_html: {value: video.published_at} %>
+    </div>
+
+    <div class="actions">
+        <%= f.button :submit, "Importer",  class: 'btn-cta' %>
+    </div>
+  </div>
+<% end %>

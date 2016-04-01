@@ -1,0 +1,9 @@
+<% if @video.errors.any? %>
+  // Render new review form with errors
+  $('.hello').html("<%= j render 'video_form', video: @video %>");
+  console.log('erreur')
+<% else %>
+  console.log('pas derreur')
+  $(".hello[data-id="+<%=@video.id%>+"]").hide();
+
+<% end %>
