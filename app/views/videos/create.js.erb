@@ -3,7 +3,8 @@
   $('.hello').html("<%= j render 'video_form', video: @video %>");
   console.log('erreur')
 <% else %>
-  console.log('pas derreur')
-  $(".hello[data-id="+<%=@video.id%>+"]").hide();
+  console.log('pas derreur');
+  console.log('<%= @video.youtube_id %>');
+  $(".hello[data-id=<%=@video.youtube_id%>]").hide();
 
 <% end %>
