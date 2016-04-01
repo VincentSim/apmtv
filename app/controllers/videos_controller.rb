@@ -40,7 +40,6 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.youtube_id = video_params[:url].match(/[v][=][-]?\w+[-]?\w+/i)[0][2..12] if video_params[:url]
-    binding.pry
     respond_to do |format|
       if @video.save
         format.js
