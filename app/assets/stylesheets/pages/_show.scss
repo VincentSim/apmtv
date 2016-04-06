@@ -8,7 +8,7 @@
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 3px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 30px;
   }
   .well{
@@ -30,5 +30,16 @@
     padding-bottom: 56.25%;
     padding-top: 60px;
     overflow: hidden;
+  }
+  .tv-title-expert{
+    text-align: center;
+    margin-bottom: 20px;
+    strong{
+      font-weight: bold;
+      padding: 0px 8px;
+      background-color: #E41E26;
+      border-radius: 2px;
+      color: white;
+    }
   }
 }

@@ -1,17 +1,23 @@
 <%= render 'shared/navpublic' %>
 <p id="notice"><%= notice %></p>
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="tv-title-show">
-          <%= @video.title %>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tv-title-show">
+        <%= @video.title %>
+      </div>
+      <div class="tv-title-expert">
+        <%= @video.expert %> | <strong><%= @video.tag %></strong>
+      </div>
+      <div class="tv-title-tag">
 
-        <div class="well well-lg">
-          <div class="responsive-video">
-            <iframe src="<%= @url %>" frameborder="0" allowfullscreen></iframe>
-          </div>
+      </div>
+
+      <div class="well well-lg">
+        <div class="responsive-video">
+          <iframe src="<%= @url %>" frameborder="0" allowfullscreen></iframe>
         </div>
+      </div>
     </div>
   </div>
 </div>
