@@ -1,0 +1,7 @@
+<%= simple_form_for(@mooc) do |f| %>
+    <%= f.input :title, label:"Titre du Mooc" %>
+    <div class="actions">
+      <%= f.button :submit, "Valider",  class: 'btn-cta' %>
+    </div>
+  </div>
+<% end %>

@@ -27,6 +27,12 @@
       <%= f.input :date %>
 
     </div>
+    <div class="split">
+      <%= f.input :mooc_id, collection: Mooc.all  %>
+      <!-- p.select(:category, options_for_select(Presentation::FR_CATEGORY, "Business")) -->
+      <%= f.input :position, label: "Position", collection: Video::POSITION %>
+
+    </div>
     <div class="actions">
       <%= f.button :submit, "Editer la vidéo",  class: 'btn-cta' %>
     </div>

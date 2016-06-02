@@ -24,6 +24,18 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     @url = '//www.youtube.com/embed/'+@video.youtube_id
+    if @video.mooc
+      p = @video.position
+      size = @video.mooc.videos.size
+      if p < size && p > 1
+        @next_video = @video.mooc.videos.find_by(position:p+1)
+        @previous_video = @video.mooc.videos.find_by(position:p+1)
+      elsif p == 1
+        @next_video = @video.mooc.videos.find_by(position:p+1)
+      elsif p == size
+        @previous_video = @video.mooc.videos.find_by(position:p-1)
+      end
+    end
   end
 
   # GET /videos/new
@@ -85,6 +97,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:youtube_id, :title, :url, :description,:expert, :category, :subcategory, :date, :tag)
+      params.require(:video).permit(:youtube_id, :title, :url, :description,:expert, :category, :subcategory, :date, :tag, :mooc_id, :position)
     end
 end

@@ -3,16 +3,41 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <div class="mooc-title-show">
+        <% if @video.mooc %>
+          <%= @video.mooc.title %> <strong><%= @video.position %>/<%= @video.mooc.videos.size %></strong>
+        <% end %>
+      </div>
       <div class="tv-title-show">
         <%= @video.title %>
       </div>
       <div class="tv-title-expert">
-        <%= @video.expert %> | <strong><%= @video.category %></strong>
+        <% if @video.mooc %>
+          <strong class="mooc"> MOOC </strong> | <%= @video.expert %> | <strong><%= @video.category %></strong>
+        <% else %>
+          <%= @video.expert %> | <strong><%= @video.category %></strong>
+        <% end %>
       </div>
       <div class="tv-title-tag">
 
       </div>
+      <div class="links">
+        <div class="link-right">
+          <% if @next_video %>
+            <%= link_to video_path(@next_video) do %>
+              vidéo suivante <i class="fa fa-step-forward" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
 
+        <div class="link-left">
+          <% if @previous_video %>
+            <%= link_to video_path(@previous_video) do %>
+             <i class="fa fa-step-backward" aria-hidden="true"></i> vidéo précédente
+            <% end %>
+          <% end %>
+        </div>
+      </div>
       <div class="well well-lg">
         <div class="responsive-video">
           <iframe src="<%= @url %>" frameborder="0" allowfullscreen></iframe>

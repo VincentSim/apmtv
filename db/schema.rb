@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120153535) do
+ActiveRecord::Schema.define(version: 20160602143825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "moocs", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.string   "youtube_id"
@@ -28,6 +34,11 @@ ActiveRecord::Schema.define(version: 20160120153535) do
     t.datetime "updated_at",  null: false
     t.string   "url"
     t.string   "tag"
+    t.integer  "mooc_id"
+    t.integer  "position"
   end
 
+  add_index "videos", ["mooc_id"], name: "index_videos_on_mooc_id", using: :btree
+
+  add_foreign_key "videos", "moocs"
 end
