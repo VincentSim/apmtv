@@ -48,14 +48,18 @@
   .mooc-title-show{
     font-size: 30px;
     text-align: center;
-    font-style: italic;
-    color: #484848;
+    /*font-style: italic;*/
+    /*color: #484848;*/
     line-height: 1.2em;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 3px;
     margin-bottom: 20px;
     font-weight: 100;
+
+    border-radius: 2px;
+    color: white;
+    background-color: $green;
   }
   .tv-title-expert{
     text-align: center;

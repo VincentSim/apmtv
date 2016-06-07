@@ -23,6 +23,12 @@
       <%= f.input :tag, label: "Tag", selected: "Parole d'expert", collection: Video::TAG %>
       <%= f.input :date, input_html: {value: video.published_at} %>
     </div>
+    <div class="split">
+      <%= f.input :mooc_id, collection: Mooc.all  %>
+      <!-- p.select(:category, options_for_select(Presentation::FR_CATEGORY, "Business")) -->
+      <%= f.input :position, label: "Position", collection: Video::POSITION %>
+
+    </div>
 
     <div class="actions">
         <%= f.button :submit, "Importer",  class: 'btn-cta' %>
