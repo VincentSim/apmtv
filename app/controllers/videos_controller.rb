@@ -55,7 +55,6 @@ class VideosController < ApplicationController
     respond_to do |format|
       if @video.save
         format.js
-        format.html
         format.json { render :show, status: :created, location: @video }
 
       else
